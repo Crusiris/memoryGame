@@ -1,6 +1,7 @@
 
 import { createContext, useState, useEffect} from "react";
 import axios from "axios";
+
 export const GameContext = createContext();
 const GameProvider = GameContext.Provider; 
 
@@ -66,7 +67,10 @@ const GameContextProvider = ({children}) => {
     }, []);
 
     return (
-        <GameProvider value={{}}>
+        <GameProvider 
+        value={{
+            cards
+        }}>
             {children}
         </GameProvider>
     );
