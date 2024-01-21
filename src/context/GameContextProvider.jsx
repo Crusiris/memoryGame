@@ -19,7 +19,40 @@ const GameContextProvider = ({children}) => {
             console.log(error);
         } 
     }
-   
+
+    const createBoard = async ()=>{
+        try {  
+          const { entries } = await getData();  
+          const images = entries.map(({ fields: { image: { url, uuid, title } } }) => {
+            return { url, uuid, title };
+          }); 
+    
+          const duplicateCards = images.flatMap((image,i)=>{   
+            const duplicate = {
+                ...image,
+                uuid:image.uuid + images.length,
+            }
+            return [image,duplicate]
+          });  
+            
+          const cards = duplicateCards.map((card)=>{
+            return{
+                ...card,
+                flippe:false,
+                matched:false,
+            }
+          }); 
+       
+          setCards(cards); 
+
+        } catch (error) {
+            console.log(error);
+        } 
+    }
+    
+    useEffect(() => {
+        createBoard();
+    }, []);
 
     return (
         <GameProvider value={{}}>
