@@ -1,5 +1,5 @@
 
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect} from "react";
 import axios from "axios";
 export const GameContext = createContext();
 const GameProvider = GameContext.Provider; 
@@ -18,6 +18,15 @@ const GameContextProvider = ({children}) => {
         } catch (error) {
             console.log(error);
         } 
+    }
+
+    const shufflerCards = (cardsArray) =>{
+        console.log(cardsArray) 
+        for (let i = cardsArray.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [cardsArray[i], cardsArray[j]] = [cardsArray[j], cardsArray[i]];
+        }
+        return cardsArray;  
     }
 
     const createBoard = async ()=>{
@@ -42,8 +51,10 @@ const GameContextProvider = ({children}) => {
                 matched:false,
             }
           }); 
+
+          const newCards = shufflerCards(cards); 
        
-          setCards(cards); 
+          setCards(newCards); 
 
         } catch (error) {
             console.log(error);
