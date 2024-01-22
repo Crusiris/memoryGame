@@ -6,8 +6,7 @@ const Card = ({card}) => {
   const { title, url,uuid, flippe} = card
 const {flipCards} = useContext(GameContext)
 
-  const handleCard = (id)=>{
-    console.log(id)
+  const handleCard = (id)=>{ 
     flipCards(id)
   }
    

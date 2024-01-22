@@ -103,7 +103,7 @@ const GameContextProvider = ({children}) => {
         }
 
         if (!cards.some(card => !card.matched)) {
-            setGameOver(true);
+            setGameover(true);
             setIsDisabled(true);
         }
     }
@@ -125,6 +125,7 @@ const GameContextProvider = ({children}) => {
         value={{
             cards,
             movements,
+            gameOver,
             flipCards,
             newGame,
             setGameover,
