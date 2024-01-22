@@ -10,6 +10,7 @@ const GameContextProvider = ({children}) => {
     const [cards, setCards] = useState([]);
     const [flip, setFlip] = useState([]);
     const [movements, setMovements] = useState(0);
+    const [isDisabled, setIsDisabled] = useState(false);
 
     const getData = async ()=>{
         const url = 'https://fed-team.modyo.cloud/api/content/spaces/animals/types/game/entries?per_page=20';
@@ -62,6 +63,51 @@ const GameContextProvider = ({children}) => {
         } 
     }
     
+    const flipCards = id =>{
+
+        if(isDisabled){
+            return
+        }
+
+        const [currentCard] = cards.filter(card => card.uuid === id);
+
+        if (!currentCard.flippe && !currentCard.matched) {
+
+            currentCard.flippe = true;
+
+            const newFlippedCards = [...flip, currentCard];
+			setFlip(newFlippedCards);
+
+            if(newFlippedCards.length === 2){
+                setIsDisabled(true);
+				const [firstCard, secondCard] = newFlippedCards;
+
+                if (firstCard.url === secondCard.url) {
+					firstCard.matched = true;
+					secondCard.matched = true;
+					setIsDisabled(false);
+				} else {
+					setTimeout(() => {
+						firstCard.flippe = false;
+						secondCard.flippe = false;
+						setCards(cards);
+						setIsDisabled(false);
+					}, 1000);
+				}
+
+                setFlip([]);
+				setMovements(movements + 1);
+            }
+
+            setCards(cards);
+        }
+
+        if (!cards.some(card => !card.matched)) {
+            setGameOver(true);
+            setIsDisabled(true);
+        }
+    }
+    
     useEffect(() => {
         createBoard();
     }, []);
@@ -69,7 +115,8 @@ const GameContextProvider = ({children}) => {
     return (
         <GameProvider 
         value={{
-            cards
+            cards,
+            flipCards
         }}>
             {children}
         </GameProvider>
