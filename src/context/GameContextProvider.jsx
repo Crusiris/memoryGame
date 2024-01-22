@@ -11,6 +11,7 @@ const GameContextProvider = ({children}) => {
     const [flip, setFlip] = useState([]);
     const [movements, setMovements] = useState(0);
     const [isDisabled, setIsDisabled] = useState(false);
+    const [gameOver, setGameover] = useState(false);
 
     const getData = async ()=>{
         const url = 'https://fed-team.modyo.cloud/api/content/spaces/animals/types/game/entries?per_page=20';
@@ -22,8 +23,7 @@ const GameContextProvider = ({children}) => {
         } 
     }
 
-    const shufflerCards = (cardsArray) =>{
-        console.log(cardsArray) 
+    const shufflerCards = (cardsArray) =>{ 
         for (let i = cardsArray.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [cardsArray[i], cardsArray[j]] = [cardsArray[j], cardsArray[i]];
@@ -112,11 +112,22 @@ const GameContextProvider = ({children}) => {
         createBoard();
     }, []);
 
+    const newGame = ()=>{
+        setCards([]);   
+        createBoard();
+        setMovements(0);
+        setGameover(false);
+        setIsDisabled(false);
+    }
+
     return (
         <GameProvider 
         value={{
             cards,
-            flipCards
+            movements,
+            flipCards,
+            newGame,
+            setGameover,
         }}>
             {children}
         </GameProvider>
