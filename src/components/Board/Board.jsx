@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import Card from '../Card/Card'
 import { GameContext } from '../../context/GameContextProvider';
+import Modal from '../Modal/Modal';
 
 const Board = () => {
     const { cards }=useContext(GameContext);
@@ -17,6 +18,7 @@ const Board = () => {
                     ))} 
                 </ul> 
             </div>
+            <Modal/>
         </section>
         
      );
