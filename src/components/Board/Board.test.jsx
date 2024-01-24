@@ -1,19 +1,18 @@
 import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
 import Board from "./Board";
+import { GameContext } from "../../context/GameContextProvider";
 
-describe("ErrorMessage", () => {
-    it("renders default error state", () => {
-      render(<Board/>);
-    //   expect(screen.getByTestId("message-container")).toHaveTextContent(
-    //     "Something went wrong"
-    //   );
-    });
-  
-    // it("renders custom error state", () => {
-    //   render(<ErrorMessage message="Email is already taken" />);
-    //   expect(screen.getByTestId("message-container")).toHaveTextContent(
-    //     "Email is already taken"
-    //   );
-    // });
+
+describe("Board", () => {
+  beforeEach(() => {
+    render(<GameContext.Provider value={{ cards: [], newGame: jest.fn() }}>
+      <Board />
+    </GameContext.Provider>);
   });
+  it("there is a text inside the DOM", () => {
+    // "Use Dark Theme" text is only shown when the light theme is active
+    expect(screen.getByText("memory game")).toBeTruthy();
+  });
+
+
+});
