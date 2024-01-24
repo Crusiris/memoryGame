@@ -55,8 +55,10 @@ const GameContextProvider = ({children}) => {
           }); 
 
           const newCards = shufflerCards(cards); 
-       
-          setCards(newCards); 
+
+          setTimeout(() => {
+            setCards(newCards); 
+          }, 3000);
 
         } catch (error) {
             console.log(error);
