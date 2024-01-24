@@ -19,12 +19,15 @@ const Board = () => {
                         <button onClick={handleNewGame} type="button" className="inline-flex w-full justify-center rounded-md bg-purple-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-purple-600 sm:ml-3 sm:w-auto">New game</button>
                     </div>
                 </div>
-                <ul  className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 justify-items-center gap-2 lg:gap-3">
-                    {cards.map((card) => (
-                    <Card key={card.uuid} card={card} />
-                    ))} 
-                </ul> 
-               
+                {cards.length>0 ? (
+                    <ul  className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 justify-items-center gap-2 lg:gap-3">
+                        {cards.map((card) => (
+                        <Card key={card.uuid} card={card} />
+                        ))} 
+                    </ul>  
+                ):
+                (<p>loading</p>)
+                }
             </div> 
             <Modal/>
         </section>
