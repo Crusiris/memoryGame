@@ -7,9 +7,9 @@ This is a simple memory game implemented using React, Vite and Tailwind css. The
 
 Adaptado a dispositivos de escritorio y mobiles
 
-![desktop.png](https://github.com/Crusiris/main/public/img/desktop.png)
+![desktop.png](https://github.com/Crusiris/memoryGame/blob/main/public/img/desktop.png)
 
-![mob.png](https://github.com/Crusiris/main/public/img/mob.png)
+![mob.png](https://github.com/Crusiris/memoryGame/blob/main/public/img/mob.png)
 
 ## **Setup**
 
