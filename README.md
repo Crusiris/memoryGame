@@ -1,11 +1,11 @@
- <img src="./frontend/purchasingApp/public/img/readme/header.png">
+ <img src="https://github.com/Crusiris/memoryGame/blob/main/public/img/header.png">
 # ¡Start having fun!
 
 This is a simple memory game implemented using React, Vite and Tailwind css. The goal of the game is to find all pairs of identical cards in the fewest number of attempts.
 
 ## Sitio
 
-Adaptado a dispositivos de escritorio y mobiles
+Adapted to desktop and mobile devices
 
 ![desktop.png](https://github.com/Crusiris/memoryGame/blob/main/public/img/desktop.png)
 
