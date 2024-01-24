@@ -5,6 +5,8 @@ This is a simple memory game implemented using React, Vite and Tailwind css. The
 
 ## Sitio
 
+[Link to MemoryGame](https://lambent-entremet-562d4a.netlify.app/) 
+
 Adapted to desktop and mobile devices
 
 ![desktop.png](https://github.com/Crusiris/memoryGame/blob/main/public/img/desktop.png)
