@@ -12,6 +12,10 @@ const GameContextProvider = ({children}) => {
     const [movements, setMovements] = useState(0);
     const [isDisabled, setIsDisabled] = useState(false);
     const [gameOver, setGameover] = useState(false);
+    const [playerName, setPlayerName] = useState('');
+    const [greetings, setGreetings] = useState(false)
+    const [error, setError] = useState(false)
+
 
     const getData = async ()=>{
         const url = 'https://fed-team.modyo.cloud/api/content/spaces/animals/types/game/entries?per_page=20';
@@ -20,6 +24,7 @@ const GameContextProvider = ({children}) => {
             return data
         } catch (error) {
             console.log(error);
+            setError(true)
         } 
     }
 
@@ -128,9 +133,14 @@ const GameContextProvider = ({children}) => {
             cards,
             movements,
             gameOver,
+            playerName,
+            greetings,
+            error,
             flipCards,
             newGame,
             setGameover,
+            setPlayerName,
+            setGreetings,
         }}>
             {children}
         </GameProvider>

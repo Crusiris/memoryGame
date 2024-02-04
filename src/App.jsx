@@ -1,12 +1,11 @@
-import { useState } from 'react'
 import './index.css'
-import GameContextProvider from './context/GameContextProvider';
-import Board from './components/Board/Board';
+import GameContextProvider from './context/GameContextProvider'; 
+import Main from './components/Main/Main';
 function App() { 
 
   return (
     <GameContextProvider>
-      <Board/> 
+      <Main/>
     </GameContextProvider>
   )
 }
