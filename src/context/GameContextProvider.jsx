@@ -14,6 +14,7 @@ const GameContextProvider = ({children}) => {
     const [gameOver, setGameover] = useState(false);
     const [playerName, setPlayerName] = useState('');
     const [greetings, setGreetings] = useState(false)
+    const [error, setError] = useState(false)
 
 
     const getData = async ()=>{
@@ -23,6 +24,7 @@ const GameContextProvider = ({children}) => {
             return data
         } catch (error) {
             console.log(error);
+            setError(true)
         } 
     }
 
@@ -133,6 +135,7 @@ const GameContextProvider = ({children}) => {
             gameOver,
             playerName,
             greetings,
+            error,
             flipCards,
             newGame,
             setGameover,

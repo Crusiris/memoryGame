@@ -2,11 +2,10 @@ import { useContext, useState } from 'react';
 import Card from '../Card/Card'
 import { GameContext } from '../../context/GameContextProvider';
 import Modal from '../Modal/Modal';
-import Loading from '../Loading/Loading';
+import Loading from '../Loading/Loading'; 
 
 const Board = () => {
-    const {cards, newGame }=useContext(GameContext);
-     
+    const {cards, newGame, error }=useContext(GameContext); 
  
     const handleNewGame = ()=>{ 
         newGame();
@@ -36,8 +35,8 @@ const Board = () => {
             }
             </div>   
             <Modal/>
-        </section> 
-     );
+        </section>  
+    );
 }
  
 export default Board;
